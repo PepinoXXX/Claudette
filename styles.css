@@ -1,0 +1,436 @@
+* {
+    margin: 0;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    /*padding: 20px;*/
+    background-color: #f3f3f3;
+}
+
+.container {
+    max-width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #302e2d /*#31beff*/;
+    font-family:'Baikal UltraExp Black';
+    text-shadow: #cfc4b5 5px 5px 10px;
+}
+
+/* Styles pour le téléchargement de fichier */
+.file-upload {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.file-upload-label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.file-upload-label:hover {
+    background-color: #0056b3;
+}
+
+.file-upload-input {
+    display: none;
+}
+
+.file-name {
+    margin-left: 15px;
+    color: #666;
+    font-style: italic;
+}
+
+.filters {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+label {
+    margin-right: 10px;
+    margin-left: 10px;
+    font-weight: bold;
+    font-size: small;
+}
+
+select {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    width: 160px;
+}
+
+.table-container {
+    overflow-x: auto;
+    overflow-y: auto;
+    width: 30%;
+}
+
+.right-column {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffefe6;
+}
+
+main-tr, total-tr, total-td {
+    display:table-cell;
+    font-weight: bold;
+    min-width: 25%;
+    width: 25%;
+    padding: 7px;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid #7c7a7a;
+    font-size: small;
+    background-color: #e47a38 /*#fe883d*/;
+    color: white;
+}
+
+th, td {
+    padding: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: left;
+    border: 1px solid #7c7a7a;
+    font-size: small;
+}
+
+th {
+    font-weight: bold;
+    min-width: 25%;
+    width: 25%;
+}
+
+td, total-td {
+    text-align: -webkit-right;
+    min-width: 25%;
+    width: 25%;
+}
+
+blank-tr {
+    display:table-cell;
+    min-width: 25%;
+    width: 25%;
+    padding: 10px;
+    background-color: #f3f3f3;
+}
+
+head-cfs {
+    display:table-cell;
+    min-width: 25%;
+    width: 25%;
+    padding: 2px;
+    background-color: #f3f3f3;
+    font-size: small;
+    font-weight: bold;
+    text-align: left;
+    font-style: italic;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background-color: #e6f7ff;
+}
+
+.numeric {
+    text-align: right;
+}
+
+.percentage {
+    text-align: right;
+}
+
+.positive {
+    color: green;
+}
+
+.negative {
+    color: red;
+}
+
+.entity-header {
+    background-color: #e0e0e0;
+    font-weight: bold;
+}
+
+.info-message {
+    text-align: center;
+    padding: 20px;
+    font-style: italic;
+    color: #666;
+}
+
+.chart-container {
+    width: 100%;
+    position: relative;
+    min-height: 40vh; /* hauteur minimale par graphique */
+}
+
+#cashChart {
+    width: 100%;
+    height: 100%;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+/* Styles for the help button and modal */
+#help-button {
+    padding: 10px;
+    background-color: #666;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#help-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    background: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+#close-help {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgb(204, 6, 6);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+footer small {
+    color: #e47a38;
+}
+
+.folder-upload-input {
+    display: none;
+}
+
+.folder-upload-label {
+    display: inline-block;
+    padding: 10px 22px;
+    background-color: #e47a38;
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 15px;
+    transition: background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    font-size: 1em;
+}
+
+.folder-upload-label:hover {
+    background-color: #fe883d;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+.sticky-notch {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    margin: 0 auto 20px auto;
+    width: fit-content;
+    min-width: 320px;
+    padding: 18px 48px 18px 48px;
+    border-radius: 0 0 32px 32px / 0 0 40px 40px;
+    border: #f3f3f3 1px solid;
+    backdrop-filter: blur(2.5px);
+    -webkit-backdrop-filter: blur(2.5px);
+    text-align: center;
+    color: #302e2d;
+    font-family: 'Baikal UltraExp Black', Arial, sans-serif;
+    font-size: 2.2em;
+    text-shadow: #cfc4b5 5px 5px 10px;
+    transition: box-shadow 0.2s;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+                              LOADER / PROGRESS BAR
+═══════════════════════════════════════════════════════════════════════════ */
+
+#loader-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(48, 46, 45, 0.85);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.loader-content {
+    background: linear-gradient(145deg, #ffffff, #f8f8f8);
+    padding: 50px 60px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 
+        0 25px 60px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+    min-width: 360px;
+    max-width: 90vw;
+}
+
+.loader-logo {
+    font-size: 3em;
+    margin-bottom: 25px;
+    animation: bounce 1s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-8px) rotate(-5deg); }
+    75% { transform: translateY(-8px) rotate(5deg); }
+}
+
+#loader-message {
+    font-size: 1.15em;
+    color: #302e2d;
+    margin-bottom: 25px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 6px;
+    background: #e8e8e8;
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 30%;
+    background: linear-gradient(90deg, #e47a38, #fe883d, #e47a38);
+    background-size: 200% 100%;
+    border-radius: 3px;
+    animation: loading 1.5s ease-in-out infinite;
+}
+
+@keyframes loading {
+    0% {
+        transform: translateX(-100%);
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        transform: translateX(400%);
+        background-position: 0% 50%;
+    }
+}
+
+.loader-steps {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.loader-step {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.9em;
+    color: #999;
+    transition: all 0.3s ease;
+}
+
+.loader-step.active {
+    color: #e47a38;
+    font-weight: 600;
+}
+
+.loader-step.done {
+    color: #4CAF50;
+}
+
+.loader-step-icon {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 2px solid currentColor;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75em;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.loader-step.active .loader-step-icon {
+    background: #e47a38;
+    border-color: #e47a38;
+    color: white;
+    animation: pulse 1s ease-in-out infinite;
+}
+
+.loader-step.done .loader-step-icon {
+    background: #4CAF50;
+    border-color: #4CAF50;
+    color: white;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
